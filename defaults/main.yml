@@ -3,7 +3,8 @@
 kvm_vm_hostname: []
 kvm_vm_public_ip: []
 kvm_vm_root_pwd: []
-kvm_vm_base_img: [] #NOTE: This should be the name of a base image in /var/lib/libvirt/images on your KVM host
+kvm_vm_base_img: "CentOS-7-x86_64-GenericCloud.qcow2" #NOTE: This should be the name of a base image in /var/lib/libvirt/images on your KVM host
+kvm_base_img_url: https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2
 kvm_vm_vcpus: "1"
 kvm_vm_ram: "1024"
 kvm_vm_os_disk_name: "{{ kvm_vm_hostname }}"
