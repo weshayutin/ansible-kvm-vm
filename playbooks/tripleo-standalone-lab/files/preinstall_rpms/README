@@ -1,0 +1,3 @@
+This is a sample file of all the rpms installed on the base node in a tripleo standalone (train/master) deployment
+
+https://openstack.fortnebula.com:13808/v1/AUTH_e8fd161dc34c421a979a9e6421f823e9/logs_16/672916/11/check/tripleo-ci-centos-7-standalone/bb467c1/logs/undercloud/var/log/extra/rpm-list.txt.gz
