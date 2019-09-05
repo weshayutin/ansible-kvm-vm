@@ -23,6 +23,10 @@ git clone https://github.com/cybertron/tripleo-repos
 pushd tripleo-repos
 python setup.py install
 
+# Ensure password authentication is enabled for ssh
+sed -i  's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+
 # Change to the non-root user
 #echo -e "\n\e[32m Switch from root to non-root user \e[0m"
 #sleep 3
