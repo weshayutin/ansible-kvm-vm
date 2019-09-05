@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  vars:
+    kvm_vm_hostname: "vm1.example.com"
+    kvm_vm_public_ip: 192.168.122.10
+    kvm_vm_root_pwd: "p@ssw0rd"
+    kvm_vm_base_img: CentOS-7-x86_64-GenericCloud.qcow2
+    kvm_vm_vcpus: "2"
+    kvm_vm_ram: "4096"
+    kvm_vm_os_disk_name: "{{ kvm_vm_hostname }}"
+    kvm_vm_os_disk_size: "10G"
+    kvm_vm_nics:
+      - name: eth0
+        bootproto: static
+        onboot: yes
+        ip: "{{ kvm_vm_public_ip }}"
+        prefix: "24"
+        gateway: "192.168.122.1"
+        dns_server: "192.168.122.1"
+        config: "--type network --source default --model virtio"
+      - name: eth1
+        bootproto: static
+        onboot: yes
+        ip: "192.168.122.253"
+        prefix: "24"
+        gateway: "192.168.122.1"
+        dns_server: "192.168.122.1"
+        config: "--type network --source default --model virtio"
+  tasks:
+    - name: Create KVM VM
+      include_role:
+        name: ansible-kvm-vm

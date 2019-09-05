@@ -1,0 +1,31 @@
+#!/bin/sh -e
+
+# basic steps required by the tripleo standalone deployment
+# http://tripleo.org/install/containers_deployment/standalone.html
+
+# create a non-root user
+echo -e "\n\e[32m create a non-root user. \e[0m"
+useradd tripleo
+echo "tripleo" | passwd --stdin tripleo 
+echo "tripleo ALL=(root) NOPASSWD:ALL" >> /etc/sudoers.d/tripleo
+chmod 0440 /etc/sudoers.d/tripleo
+
+# Ensure a fully qualified hostname
+echo -e "\n\e[32m Ensure a fully qualified hostname. \e[0m"
+hostnamectl set-hostname standalone.localdomain
+hostnamectl set-hostname standalone.localdomain --transient
+hostnamectl status
+
+# Install tripleo-repos
+echo -e "\n\e[32m Install tripleo-repos \e[0m"
+yum install -y git
+git clone https://github.com/cybertron/tripleo-repos
+pushd tripleo-repos
+python setup.py install
+
+# Change to the non-root user
+#echo -e "\n\e[32m Switch from root to non-root user \e[0m"
+#sleep 3
+#su - tripleo
+
+exit 0
