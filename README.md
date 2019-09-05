@@ -40,10 +40,10 @@ Example Playbook
     kvm_vm_public_ip: 192.168.122.10
     kvm_vm_root_pwd: "p@ssw0rd"
     kvm_vm_base_img: rhel-guest-image-7.qcow2
-    kvm_vm_vcpus: "2"
-    kvm_vm_ram: "4096"
+    kvm_vm_vcpus: "4"
+    kvm_vm_ram: "8192"
     kvm_vm_os_disk_name: "{{ kvm_vm_hostname }}"
-    kvm_vm_os_disk_size: "10G"
+    kvm_vm_os_disk_size: "30G"
     kvm_vm_nics:
       - name: eth0
         bootproto: static
@@ -56,7 +56,7 @@ Example Playbook
   tasks:
     - name: Create KVM VM
       include_role:
-        name: RedHatGov.kvm-vm
+        name: ansible-kvm-vm
 ```
 
 License
