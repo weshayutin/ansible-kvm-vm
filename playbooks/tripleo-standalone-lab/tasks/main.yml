@@ -83,6 +83,13 @@
     force: true
     mode: 0755
 
+- name: Create a permissive selinux config
+  template:
+    src: selinux.j2
+    dest: /tmp/config
+    force: true
+    mode: 0755
+
 - name: Copy rc.local into vm operating disk
   command: >
     virt-copy-in -a /var/lib/libvirt/images/{{ kvm_vm_hostname }}.qcow2
@@ -93,6 +100,12 @@
   command: >
     virt-copy-in -a /var/lib/libvirt/images/{{ kvm_vm_hostname }}.qcow2
     /tmp/tripleo_prereq.sh /root
+  changed_when: false
+
+- name: Copy a permissive selinux config into vm operating disk
+  command: >
+    virt-copy-in -a /var/lib/libvirt/images/{{ kvm_vm_hostname }}.qcow2
+    /tmp/config /etc/selinux/
   changed_when: false
 
 - name: Create the ifcfg files for vm

@@ -39,7 +39,7 @@ Example Playbook
     kvm_vm_hostname: "vm1.example.com"
     kvm_vm_public_ip: 192.168.122.10
     kvm_vm_root_pwd: "p@ssw0rd"
-    kvm_vm_base_img: rhel-guest-image-7.qcow2
+    kvm_vm_base_img: CentOS-7-x86_64-GenericCloud.qcow2
     kvm_vm_vcpus: "4"
     kvm_vm_ram: "8192"
     kvm_vm_os_disk_name: "{{ kvm_vm_hostname }}"
@@ -53,10 +53,18 @@ Example Playbook
         gateway: "192.168.122.1"
         dns_server: "192.168.122.1"
         config: "--type network --source default --model virtio"
+      - name: eth1
+        bootproto: static
+        onboot: yes
+        ip: "192.168.122.253"
+        prefix: "24"
+        gateway: "192.168.122.1"
+        dns_server: "192.168.122.1"
+        config: "--type network --source default --model virtio"
   tasks:
     - name: Create KVM VM
       include_role:
-        name: ansible-kvm-vm
+        name: tripleo-standalone-lab
 ```
 
 License
@@ -66,5 +74,5 @@ GPLv3
 
 Author Information
 ------------------
-
+[Red Hat World Wide TripleO Flying Owls](http://tripleo.org/)
 [Red Hat North American Public Sector Solution Architects](https://redhatgov.io)
