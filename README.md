@@ -1,7 +1,7 @@
-kvm-vm
-=========
+TripleO Standalone Lab Setup
+===========================
 
-Create a VM on a RHEL+KVM hypervisor.
+Create a VM on a RHEL+KVM hypervisor that is ready to deploy TripleO Standalone
 
 Requirements
 ------------
@@ -18,10 +18,10 @@ Role Variables
 | `kvm_vm_public_ip` | :heavy_check_mark:      |  | The reachable public IP for the VM |
 | `kvm_vm_root_pwd` | :heavy_check_mark:      |  | Password for the root user of the VM |
 | `kvm_vm_base_img` | :heavy_check_mark:      |  | Name of the base image located in /var/lib/libvirt/images on the KVM hypervisor |
-| `kvm_vm_vcpus` | :x:      | ```1``` | Number of vCPUS to assign to the VM |
-| `kvm_vm_ram` | :x:      | ```1024``` | Amount of ram to give to the VM in megabytes |
+| `kvm_vm_vcpus` | :x:      | ```4``` | Number of vCPUS to assign to the VM |
+| `kvm_vm_ram` | :x:      | ```8192``` | Amount of ram to give to the VM in megabytes |
 | `kvm_vm_os_disk_name` | :x:      | ```{{ kvm_vm_hostname }}``` | Name of the OS disk in /var/lib/libvirt/images |
-| `kvm_vm_os_disk_size` | :x:      | ```10G``` | Size of OS disk for the VM |
+| `kvm_vm_os_disk_size` | :x:      | ```50G``` | Size of OS disk for the VM |
 | `kvm_vm_nics` | :heavy_check_mark:      | ```see example playbook``` | Dictionary of NICs to create for the VM |
 
 Dependencies
@@ -75,4 +75,5 @@ GPLv3
 Author Information
 ------------------
 [Red Hat World Wide TripleO Flying Owls](http://tripleo.org/)
+
 [Red Hat North American Public Sector Solution Architects](https://redhatgov.io)
