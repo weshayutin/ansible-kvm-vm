@@ -27,9 +27,13 @@ python setup.py install
 sed -i  's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
 
-# Change to the non-root user
-#echo -e "\n\e[32m Switch from root to non-root user \e[0m"
-#sleep 3
-#su - tripleo
+# pull the lab scripts
+mkdir /home/tripleo/labs
+# need to get this in a public git server
+#curl -o /home/tripleo/labs/standalone_01.sh https://gitlab.cee.redhat.com/snippets/1154/raw
+
+# set the correct ownership
+chown -R tripleo:tripleo /home/tripleo/labs
+
 
 exit 0
